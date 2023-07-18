@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NavSlideFromBottom extends PageRouteBuilder {
   final Widget page;
   
-  NavSlideFromBottom({ this.page }) : 
+  NavSlideFromBottom({ required this.page }) :
     super(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
       return page;
     },

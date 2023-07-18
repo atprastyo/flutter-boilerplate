@@ -3,10 +3,10 @@ class TodoTable {
   static final String columnId = '_id';
   static final String columnTitle = 'title';
 
-  int id;
-  String title;
+  late final int id;
+  late String title;
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
     columnId: id,
     columnTitle: title
   };

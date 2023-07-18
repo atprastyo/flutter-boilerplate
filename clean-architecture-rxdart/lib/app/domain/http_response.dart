@@ -3,5 +3,5 @@ class HttpResponse {
   String message = "";
   dynamic data;
 
-  HttpResponse({ this.statusCode, this.message, this.data });
+  HttpResponse({ required this.statusCode, required this.message, this.data });
 }

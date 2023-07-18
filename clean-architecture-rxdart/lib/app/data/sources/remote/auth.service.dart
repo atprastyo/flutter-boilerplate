@@ -6,16 +6,16 @@ import 'package:flutter_boilerplate/core/di/injector_provider.dart';
 
 import './base/endpoints.dart' as Endpoints;
 
-class AuthService{
+class AuthService {
   HttpClient client = inject<HttpClient>();
 
   Future<HttpResponse> login(String login, String senha) async {
-    HttpResponse response = HttpResponse();
+    HttpResponse response = HttpResponse(statusCode: 0, message: '');
 
     final String url = Endpoints.login.auth;
 
     final payload = {login, senha};
-    
+
     final retAuth = client.post(url, body: payload);
 
     await retAuth.then((res) {
@@ -24,20 +24,19 @@ class AuthService{
       StorageHelper.set(StorageKeys.login, login);
       StorageHelper.set(StorageKeys.senha, senha);
 
-      response.statusCode = res.statusCode;
+      response.statusCode = res.statusCode ?? 200;
       response.data = UserMapper.fromJson(res.data);
-      response.message = res.statusMessage;
-    })
-    .catchError((e) {
+      response.message = res.statusMessage ?? '';
+    }).catchError((e) {
       StorageHelper.set(StorageKeys.token, "");
       StorageHelper.set(StorageKeys.login, "");
       StorageHelper.set(StorageKeys.senha, "");
-      
+
       response.statusCode = 500;
       response.data = e;
       response.message = "User not found";
     });
-    
+
     return response;
   }
 }

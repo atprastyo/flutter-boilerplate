@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/ui/components/loading.dart';
-import 'package:flutter_boilerplate/app/ui/modules/unauthenticated/login/login.viewmodel.dart';
+import 'package:flutter_boilerplate/app/presentation/components/loading.dart';
+import 'package:flutter_boilerplate/app/presentation/modules/unauthenticated/login/login.viewmodel.dart';
 import 'package:flutter_boilerplate/core/di/injector_provider.dart';
 import 'login.widget.dart';
 
@@ -20,7 +20,8 @@ class _LoginPageState extends State<LoginPage> with LoginWidget {
       builder: (context, snapshot) {
         return LoadingWidget( 
           message: "Loading message",
-          status: snapshot.data,
+          status: snapshot.data as bool,
+          backgroundTransparent: true,
           child: SafeArea(
             child: Scaffold(
               key: _scaffoldKey,

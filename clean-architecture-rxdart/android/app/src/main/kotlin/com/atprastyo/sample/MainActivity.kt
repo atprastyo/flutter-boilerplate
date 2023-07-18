@@ -1,4 +1,4 @@
-package com.whitewear.flutter_boilerplate
+package com.atprastyo.news
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -10,16 +10,16 @@ class UserService{
   HttpClient client = inject<HttpClient>();
   
   Future<HttpResponse> list() async {
-    HttpResponse response = HttpResponse();
+    HttpResponse response = HttpResponse(message: '', statusCode: 0);
 
     final String url = Endpoints.myList.list;
 
     final ret = client.get(url);
 
     await ret.then((res) {
-      response.statusCode = res.statusCode;
+      response.statusCode = res.statusCode ?? 200;
       response.data = UserMapper.fromJsonList(res.data);
-      response.message = res.statusMessage;
+      response.message = res.statusMessage ?? '';
     })
     .catchError((e) {
       response.statusCode = 500;

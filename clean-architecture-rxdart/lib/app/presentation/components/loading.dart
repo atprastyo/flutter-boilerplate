@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/text.dart';
-
 import 'package:flutter_boilerplate/core/values/colors.dart' as colors;
+
+import '../widgets/text.dart';
 
 class LoadingWidget extends StatefulWidget {
   final bool backgroundTransparent;
@@ -9,13 +9,13 @@ class LoadingWidget extends StatefulWidget {
   final bool status;
   final Widget child;
 
-  const LoadingWidget(
-      {Key key,
-      this.status,
-      this.child,
-      this.message,
-      this.backgroundTransparent})
-      : super(key: key);
+  const LoadingWidget({
+    Key? key,
+    required this.status,
+    required this.child,
+    required this.message,
+    required this.backgroundTransparent,
+  }) : super(key: key);
 
   @override
   _LoadingWidgetState createState() => _LoadingWidgetState();
@@ -25,8 +25,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: <Widget>[widget.child, _loadingWidget(widget.status)]
-    );
+        children: <Widget>[widget.child, _loadingWidget(widget.status)]);
   }
 
   Widget _loadingWidget(bool loadingWidget) {

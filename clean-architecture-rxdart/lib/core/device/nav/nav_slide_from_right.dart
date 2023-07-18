@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NavSlideFromRight extends PageRouteBuilder {
   final Widget page;
   
-  NavSlideFromRight({ this.page }) : 
+  NavSlideFromRight({ required this.page }) :
     super(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
       return page;
     },

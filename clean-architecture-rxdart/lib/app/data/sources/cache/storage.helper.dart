@@ -8,23 +8,15 @@ class StorageKeys {
 }
 
 class StorageHelper {
-  static SharedPreferences _prefs;
-
-  static Future<dynamic> _getInstance() async => _prefs = await SharedPreferences.getInstance();
-
-  static Future<String> get(String key) async {
-    await _getInstance();
-    return _prefs.getString(key);
+  static Future<String?> get(String key) async {
+    return (await SharedPreferences.getInstance()).getString(key);
   }
 
   static void set(String key, dynamic value) async {
-    await _getInstance();
-    _prefs.setString(key, value);
+    (await SharedPreferences.getInstance()).setString(key, value);
   }
 
   static void remove(String key) async {
-    await _getInstance();
-    _prefs.remove(key);
+    (await SharedPreferences.getInstance()).remove(key);
   }
 }
-

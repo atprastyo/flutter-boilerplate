@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/ui/modules/authenticated/home/home.viewmodel.dart';
-import 'package:flutter_boilerplate/app/ui/modules/unauthenticated/login/login.page.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/button.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/text.dart';
+import 'package:flutter_boilerplate/app/presentation/modules/authenticated/home/home.viewmodel.dart';
+import 'package:flutter_boilerplate/app/presentation/modules/unauthenticated/login/login.page.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/button.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/text.dart';
 import 'package:flutter_boilerplate/core/device/nav/nav_slide_from_left.dart';
 import 'package:flutter_boilerplate/core/di/injector_provider.dart';
 

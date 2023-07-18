@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_boilerplate/app/data/sources/cache/storage.helper.dart';
 
 class HttpClient {
-  Dio _client;
+  late Dio _client;
 
   HttpClient() {
     _client = Dio();
@@ -11,14 +11,14 @@ class HttpClient {
 
   Interceptor _interceptor() {
     return InterceptorsWrapper(
-      onRequest: (RequestOptions request) async {
+      onRequest: (RequestOptions request, _) async {
         final storageToken = await StorageHelper.get(StorageKeys.token);
 
         if (storageToken != null) request.headers.addAll({
           "Authorization": 'Bearer $storageToken',
         });
 
-        return request;
+        return Future.value(request);
       }
     );
   }

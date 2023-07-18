@@ -3,7 +3,6 @@ import 'colors.dart' as colors;
 
 final ThemeData appTheme = ThemeData(
   primaryColor: colors.primaryColor,
-  accentColor: colors.accentColor,
   scaffoldBackgroundColor: colors.backgroundColor,
 
   appBarTheme: AppBarTheme(

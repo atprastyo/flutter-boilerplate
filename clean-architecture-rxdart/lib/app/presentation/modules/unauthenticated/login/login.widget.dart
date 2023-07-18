@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/ui/modules/authenticated/home/home.page.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/button.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/input.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/logo.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/snackbar.dart';
-import 'package:flutter_boilerplate/app/ui/widgets/text.dart';
+import 'package:flutter_boilerplate/app/presentation/modules/authenticated/home/home.page.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/button.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/input.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/logo.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/snackbar.dart';
+import 'package:flutter_boilerplate/app/presentation/widgets/text.dart';
 import 'package:flutter_boilerplate/core/device/nav/nav_slide_from_top.dart';
 import 'package:flutter_boilerplate/core/di/injector_provider.dart';
 import 'package:flutter_boilerplate/core/values/dimens.dart' as dimens;
@@ -30,7 +30,7 @@ class LoginWidget {
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "USERNAME",
-                    value: snapshot.data,
+                    value: snapshot.data.toString(),
                     onChange: (value) => vm.setLogin(value),
                   );
                 }),
@@ -40,14 +40,14 @@ class LoginWidget {
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "PASSWORD",
-                    value: snapshot.data,
+                    value: snapshot.data.toString(),
                     onChange: (value) => vm.setPassword(value),
                   );
                 }),
             SizedBox(height: 20),
             Align(
                 alignment: Alignment.centerRight,
-                child: FlatButton(
+                child: TextButton(
                   onPressed: () => print("forgot password click"),
                   child: TextWidget(
                     text: "Forgot Password?",
