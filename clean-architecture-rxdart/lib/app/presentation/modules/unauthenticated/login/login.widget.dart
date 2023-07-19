@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/presentation/modules/authenticated/home/home.page.dart';
 import 'package:flutter_boilerplate/app/presentation/widgets/button.dart';
@@ -26,56 +28,66 @@ class LoginWidget {
             LogoWidget(),
             SizedBox(height: 20),
             StreamBuilder(
-                stream: vm.login,
-                builder: (context, snapshot) {
-                  return InputWidget(
-                    placeholder: "USERNAME",
-                    value: snapshot.data.toString(),
-                    onChange: (value) => vm.setLogin(value),
-                  );
-                }),
+              stream: vm.login,
+              builder: (context, snapshot) {
+                return InputWidget(
+                  placeholder: "USERNAME",
+                  value: snapshot.data.isNull ? null : snapshot.data.toString(),
+                  onChange: (value) => vm.setLogin(value),
+                );
+              },
+            ),
             SizedBox(height: 10),
             StreamBuilder(
-                stream: vm.password,
-                builder: (context, snapshot) {
-                  return InputWidget(
-                    placeholder: "PASSWORD",
-                    value: snapshot.data.toString(),
-                    onChange: (value) => vm.setPassword(value),
-                  );
-                }),
+              stream: vm.password,
+              builder: (context, snapshot) {
+                return InputWidget(
+                  placeholder: "PASSWORD",
+                  value: snapshot.data.isNull ? null : snapshot.data.toString(),
+                  onChange: (value) => vm.setPassword(value),
+                );
+              },
+            ),
             SizedBox(height: 20),
             Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () => print("forgot password click"),
-                  child: TextWidget(
-                    text: "Forgot Password?",
-                    small: true,
-                  ),
-                )),
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () => print("forgot password click"),
+                child: TextWidget(
+                  text: "Forgot Password?",
+                  small: true,
+                ),
+              ),
+            ),
             SizedBox(height: 12),
             ButtonWidget(
-                label: "login",
-                onPress: () async {
-                  final ret = await vm.signIn();
+              label: "login",
+              onPress: () async {
+                final ret = await vm.signIn();
 
-                  if (ret) {
-                    SnackbarWidget(key, message: "SUCCESS");
-                  } else {
-                    SnackbarWidget(key,
-                        error: true,
-                        message: "NOT FOUND",
-                        actionMessage: "OK", action: () {
+                if (ret) {
+                  SnackbarWidget(key, message: "SUCCESS");
+                } else {
+                  SnackbarWidget(
+                    key,
+                    error: true,
+                    message: "NOT FOUND",
+                    actionMessage: "OK",
+                    action: () {
                       print("ACTION CLICKED");
-                    });
-                  }
+                    },
+                  );
+                }
 
-                  await Future.delayed(Duration(seconds: 1));
+                await Future.delayed(Duration(seconds: 1));
+                print('ha');
 
-                  Navigator.pushReplacement(
-                      context, NavSlideFromTop(page: HomePage()));
-                }),
+                Navigator.pushReplacement(
+                  context,
+                  NavSlideFromTop(page: HomePage()),
+                );
+              },
+            ),
             SizedBox(height: 12),
             ButtonWidget(
                 label: "Register",

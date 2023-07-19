@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/presentation/components/loading.dart';
 import 'package:flutter_boilerplate/app/presentation/modules/unauthenticated/login/login.viewmodel.dart';
 import 'package:flutter_boilerplate/core/di/injector_provider.dart';
+
 import 'login.widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,22 +19,20 @@ class _LoginPageState extends State<LoginPage> with LoginWidget {
     return StreamBuilder(
       stream: vm.loading,
       builder: (context, snapshot) {
-        return LoadingWidget( 
+        return LoadingWidget(
           message: "Loading message",
-          status: snapshot.data as bool,
+          status: snapshot.data != null ? snapshot.data as bool : false,
           backgroundTransparent: true,
           child: SafeArea(
             child: Scaffold(
               key: _scaffoldKey,
               body: SingleChildScrollView(
-                child: Container(
-                  child: form(context, _scaffoldKey)
-                ),
-              )
+                child: Container(child: form(context, _scaffoldKey)),
+              ),
             ),
-          )
+          ),
         );
-      }
+      },
     );
   }
 }

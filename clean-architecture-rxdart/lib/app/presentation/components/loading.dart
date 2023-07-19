@@ -11,7 +11,7 @@ class LoadingWidget extends StatefulWidget {
 
   const LoadingWidget({
     Key? key,
-    required this.status,
+    this.status = false,
     required this.child,
     required this.message,
     required this.backgroundTransparent,
@@ -25,7 +25,8 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-        children: <Widget>[widget.child, _loadingWidget(widget.status)]);
+      children: <Widget>[widget.child, _loadingWidget(widget.status)],
+    );
   }
 
   Widget _loadingWidget(bool loadingWidget) {
