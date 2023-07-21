@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
-import 'package:news/features/daily_news/presentation/bloc/article/remote/remote_article_event.dart';
-import 'package:news/features/daily_news/presentation/bloc/article/remote/remote_article_state.dart';
-import 'package:news/injector.dart';
 
+import '../../../../../injector.dart';
 import '../../../domain/entities/article.dart';
+import '../../bloc/article/remote/remote_article_bloc.dart';
+import '../../bloc/article/remote/remote_article_event.dart';
+import '../../bloc/article/remote/remote_article_state.dart';
 import '../../widgets/article_tile.dart';
 
 class DailyNews extends StatelessWidget {
@@ -46,11 +46,17 @@ class DailyNews extends StatelessWidget {
         }
         if (state is RemoteArticlesError) {
           return Center(
-            child: IconButton(
-              onPressed: () {
-                sl<RemoteArticlesBloc>().add(const GetArticles());
-              },
-              icon: const Icon(Icons.refresh, size: 32),
+            child: Column(
+              children: [
+                const Text('Something went wrong'),
+                const SizedBox(height: 16),
+                IconButton(
+                  onPressed: () {
+                    sl<RemoteArticlesBloc>().add(const GetArticles());
+                  },
+                  icon: const Icon(Icons.refresh, size: 32),
+                ),
+              ],
             ),
           );
         }

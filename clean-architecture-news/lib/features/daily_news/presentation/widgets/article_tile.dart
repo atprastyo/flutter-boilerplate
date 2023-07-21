@@ -20,7 +20,6 @@ class ArticleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(article);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: _onTap,

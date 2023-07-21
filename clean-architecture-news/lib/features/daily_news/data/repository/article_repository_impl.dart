@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:news/core/constants/constants.dart';
-import 'package:news/core/resources/data_state.dart';
-import 'package:news/features/daily_news/data/data_sources/local/app_database.dart';
-import 'package:news/features/daily_news/data/models/article.dart';
-import 'package:news/features/daily_news/domain/entities/article.dart';
-import 'package:news/features/daily_news/domain/repository/article_repository.dart';
 
+import '../../../../core/constants/constants.dart';
+import '../../../../core/resources/data_state.dart';
+import '../../domain/entities/article.dart';
+import '../../domain/repository/article_repository.dart';
+import '../data_sources/local/app_database.dart';
 import '../data_sources/remote/news_api_service.dart';
+import '../models/article.dart';
 
 class ArticleRepositoryImpl implements ArticleRepository {
   final NewsApiService _newsApiService;
@@ -43,8 +43,6 @@ class ArticleRepositoryImpl implements ArticleRepository {
         );
       }
     } on DioException catch (e) {
-      print('aaarch');
-      print(e.toString());
       return DataFailed(e);
     }
   }

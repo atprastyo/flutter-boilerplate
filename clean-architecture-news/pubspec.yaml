@@ -39,6 +39,7 @@ dependencies:
 
   #Database
   floor: any
+  sqflite: ^2.2.8+4
 
   #make request to api
   dio: ^5.3.0
