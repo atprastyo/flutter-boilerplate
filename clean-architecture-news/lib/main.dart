@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news/config/routes/routes.dart';
-import 'package:news/features/daily_news/presentation/bloc/article/remote/remote_article_event.dart';
-import 'package:news/features/daily_news/presentation/pages/home/daily_news.dart';
+
+import 'config/routes/routes.dart';
 import 'config/theme/app_themes.dart';
 import 'features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
+import 'features/daily_news/presentation/bloc/article/remote/remote_article_event.dart';
+import 'features/daily_news/presentation/pages/home/daily_news.dart';
 import 'service_locator.dart';
 
 Future<void> main() async {
@@ -24,9 +25,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRoutes.onGenerateRoutes,
-        home: const DailyNews()
+        home: const DailyNews(),
       ),
     );
   }
 }
-
