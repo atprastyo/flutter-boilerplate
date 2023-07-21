@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../../../../injector.dart';
+import '../../../../../service_locator.dart';
 import '../../../domain/entities/article.dart';
 import '../../bloc/article/local/local_article_bloc.dart';
 import '../../bloc/article/local/local_article_event.dart';
