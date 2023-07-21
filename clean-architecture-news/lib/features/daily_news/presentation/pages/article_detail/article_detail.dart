@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
-import '../../../../../injection_container.dart';
+
+import '../../../../../injector.dart';
 import '../../../domain/entities/article.dart';
 import '../../bloc/article/local/local_article_bloc.dart';
 import '../../bloc/article/local/local_article_event.dart';
 
 class ArticleDetailsView extends HookWidget {
-  final ArticleEntity ? article;
+  final ArticleEntity? article;
 
   const ArticleDetailsView({Key? key, this.article}) : super(key: key);
 
@@ -57,9 +58,12 @@ class ArticleDetailsView extends HookWidget {
           // Title
           Text(
             article!.title!,
-            style: const TextStyle(fontFamily: 'Butler', fontSize: 20, fontWeight: FontWeight.w900),
+            style: const TextStyle(
+              fontFamily: 'Butler',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
           ),
-
           const SizedBox(height: 14),
           // DateTime
           Row(
@@ -96,7 +100,7 @@ class ArticleDetailsView extends HookWidget {
     );
   }
 
-    Widget _buildFloatingActionButton() {
+  Widget _buildFloatingActionButton() {
     return Builder(
       builder: (context) => FloatingActionButton(
         onPressed: () => _onFloatingActionButtonPressed(context),
@@ -109,9 +113,8 @@ class ArticleDetailsView extends HookWidget {
     Navigator.pop(context);
   }
 
-  
   void _onFloatingActionButtonPressed(BuildContext context) {
-    BlocProvider.of < LocalArticleBloc > (context).add(SaveArticle(article!));
+    BlocProvider.of<LocalArticleBloc>(context).add(SaveArticle(article!));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         backgroundColor: Colors.black,
@@ -119,5 +122,4 @@ class ArticleDetailsView extends HookWidget {
       ),
     );
   }
-
 }

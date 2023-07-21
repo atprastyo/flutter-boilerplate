@@ -5,7 +5,7 @@ import 'package:news/features/daily_news/presentation/bloc/article/remote/remote
 import 'package:news/features/daily_news/presentation/pages/home/daily_news.dart';
 import 'config/theme/app_themes.dart';
 import 'features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
-import 'injection_container.dart';
+import 'injector.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
